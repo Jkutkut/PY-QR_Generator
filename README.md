@@ -1,2 +1,2 @@
--e # PY-QR_Generator:
+# PY-QR_Generator:
 
