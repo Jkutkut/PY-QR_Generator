@@ -1,36 +1,25 @@
 #!/usr/bin/env python3
-import pygame; # library to generate the graphic interface
-import time; # to set a delay between each iteration
-from Classes.color import color;
 
-pygame.init() # Init pygame
-pygame.display.set_caption("Breakout") # Set the title of the game
+import sys
+from PIL import Image, ImageDraw
 
-# CONSTANTS
-width, height = 1000, 1000 
-sizeX, sizeY = 50, 50 # Number of cell spots in each axis
-sizeWidthX = width / sizeX # Size of each spot
-sizeWidthY = height / sizeY
-COLOR = color() # Get the color class with the constants
+# Constants
+BG = (255, 255, 255)
+SIZE = (128, 128)
 
-screen = pygame.display.set_mode((width, height)) # Set the size of the window
+# with Image.open("hopper.jpg") as im:
+with Image.new('RGB', SIZE, color=BG) as im:
 
-gameRunning = True # If false, the game stops
-timeRunning = False # If true, time runs (so iterations occur)
-while gameRunning:
-	screen.fill(COLOR.BG) # Clean screen
+    draw = ImageDraw.Draw(im)
 
-	if timeRunning:
-		time.sleep(0.1) # set a delay between each iteration
-	pygame.display.flip() # Update the screen
 
-	for event in pygame.event.get(): # for each event
-		if event.type == pygame.QUIT: # if quit btn pressed
-			gameRunning = False # no longer running game
-		elif event.type == pygame.KEYDOWN: # Key pressed
-			if event.key == 32: # Space pressed
-				timeRunning = not timeRunning # Toggle the run of iterations
 
-print("Thanks for playing, I hope you liked it.")
+	# Debug cross
+    draw.line((0, 0) + im.size, fill=128)
+    draw.line((0, im.size[1], im.size[0], 0), fill=128)
+
+    # write to stdout
+    im.save("qr.png")
+
+print("Thanks for using this code, I hope you liked it.")
 print("See more projects like this one on https://github.com/jkutkut/")
-pygame.quit() # End the pygame
