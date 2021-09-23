@@ -50,6 +50,7 @@ class QR:
     
     # Positioning and orientation
     def drawPositioning(self, x: int, y: int):
+        '''Draws a positioning square on the given location.'''
         rect = [(-2 + i, -2 + i, 2 - i, 2 - i) for i in range(3)]
         rect = [(c[0] + x, c[1] + y, c[2] + x, c[3] + y) for c in rect]
 
@@ -68,7 +69,7 @@ class QR:
             self.drawRect(r, next(color))
 
 
-    def blinkColor(firstBG=True) -> Generator[tuple, None, None]:
+    def blinkColor(firstBG:bool=True) -> Generator[tuple, None, None]:
         '''Generator that blinks between the background and color of the QR.'''
         if firstBG:
             yield Color.BG
