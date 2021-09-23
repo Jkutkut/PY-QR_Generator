@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import sys
 from PIL import Image, ImageDraw
 
 # Constants
@@ -22,8 +21,6 @@ def drawCorner(x, y):
 with Image.new('RGB', SIZE, color=(29, 184, 245)) as im:
 
     draw = ImageDraw.Draw(im)
-
-    # draw.rectangle((10, 10, 20, 20), fill=QR_COLOR)
 
 	# Corners
     drawCorner(0, 0)
