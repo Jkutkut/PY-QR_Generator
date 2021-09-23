@@ -37,7 +37,7 @@ class QR:
             im.save("qr.png")
 
     def drawPixel(self, x: int, y: int, color: tuple) -> None:
-        pass
+        self.drawRect((x, y, x, y), color)
 
     def drawRect(self, coord: tuple, color: tuple) -> None:
         '''Draws a rectangle on the given coordinate (xi, yi, xf, yf) with the given RGB color.'''
