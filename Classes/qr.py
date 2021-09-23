@@ -55,7 +55,11 @@ class QR:
             self.drawRect(r, next(color))
 
 
-    def blinkColor() -> Generator[tuple, None, None]:
-        while(True):
+    def blinkColor(firstBG=True) -> Generator[tuple, None, None]:
+        '''Generator that blinks between the background and color of the QR.'''
+        if firstBG:
             yield Color.BG
+
+        while(True):
             yield Color.QR_COLOR
+            yield Color.BG
